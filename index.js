@@ -1,4 +1,4 @@
-const log = console.log
+const log = console.log;
 
 // FETCH HYRULE DATA //
 const hyruleData = {
@@ -11,10 +11,10 @@ const faveButton = document.querySelector(".favorites-button");
 
 faveButton.addEventListener("click", () => {
   displayCards.textContent = ``;
-    hyruleData.favorites.forEach((item) => {
-      console.log(item);
-      renderFavoritesCard(item);
-    });
+  hyruleData.favorites.forEach((item) => {
+    console.log(item);
+    renderFavoritesCard(item);
+  });
 });
 
 // FAVORITES CARD //
@@ -122,15 +122,18 @@ function renderMaterials(data) {
   });
 }
 
-// SEARCH //
-function searchHyrule(e) {
-  e.preventDefault();
-  debugger;
-  const searchTerm = e.target.elements["search"].value;
-  return searchTerm;
-}
+// SEARCH  //
+const inputText = document.querySelector(".input-text");
 
-function search() {
-  form.addEventListener("submit", searchHyrule);
-}
-search(hyruleData);
+inputText.addEventListener("input", (e) => {
+  const filterMaterials = hyruleData.materials.filter(
+    ({ name, description }) => {
+      return (
+        name.includes(e.target.value) || description.includes(e.target.value)
+      );
+    }
+  );
+  const results = document.querySelector("#results");
+  results.textContent = "";
+  renderMaterials(filterMaterials);
+});
