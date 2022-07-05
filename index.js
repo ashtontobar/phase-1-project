@@ -1,14 +1,62 @@
-// ADD EVENT LISTENER TO THE FAVORITES BUTTON // 
+const log = console.log
+
+// FETCH DATA //
+const hyruleData = {
+  allData: fetchHyruleData("https://botw-compendium.herokuapp.com/api/v2/all"),
+  favorites: [],
+};
+
+// ADD EVENT LISTENER TO THE FAVORITES BUTTON //
+const faveButton = document.querySelector(".favorites-button");
+
+faveButton.addEventListener("click", () => {
+  displayCards.textContent = ``;
+    hyruleData.favorites.forEach((item) => {
+      console.log(item);
+      renderFavoritesCard(item);
+    });
+});
+
+// FAVORITES CARD //
+function renderFavoritesCard(data) {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.style.width = "18rem";
+  const cardContent = `
+      <img src="${data.image}" class="card-img-top" alt="${data.image}">
+      <div class="card-body">
+        <h5 class="card-title">Name: ${data.name[0]
+          .toUpperCase()
+          .slice(-1)}${data.name.slice(1)} </h5>
+        <p class="card-text">${data.description}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Hearts Recovered: ${
+          data.hearts_recovered
+        }</li>
+        <li class="list-group-item">Common Locations: ${
+          data.common_locations
+        }</li>
+        <li class="list-group-item">Cooking Effect(s): ${
+          data.cooking_effect
+        }</li>
+      </ul>
+      <button class='remove-button'>➖ Remove</button>`;
+  card.innerHTML = cardContent;
+  const removeButton = card.querySelector(".remove-button");
+
+  // ADD EVENT LISTENER TO REMOVE BUTTON //
+  removeButton.addEventListener("click", (e) => {
+    card.remove();
+  });
+
+  displayCards.append(card);
+}
 
 // GLOBAL VARIABLES //
 const form = document.querySelector(".search-hyrule");
 const displayCards = document.querySelector("#results");
 
-// FETCH DATA //
-const hyruleData = {
-  allData: fetchHyruleData("https://botw-compendium.herokuapp.com/api/v2/all"),
-  favorites: []
-};
 async function fetchHyruleData(url) {
   const response = await fetch(url);
   const data = await response.json();
@@ -29,8 +77,6 @@ hyruleData.allData.then(({ data }) => {
   hyruleData.materials = materials;
   hyruleData.monsters = monsters;
   hyruleData.equipment = equipment;
-
-  console.log(materials);
 
   renderMaterials(materials);
 });
@@ -57,34 +103,24 @@ function renderMaterialsCard(data) {
       }</li>
       <li class="list-group-item">Cooking Effect(s): ${data.cooking_effect}</li>
     </ul>
-    <button class='add-button'>➕ Add</button>`;
+    <button class='add-button'>➕ Add to Favorites</button>`;
   card.innerHTML = cardContent;
-  const addButton = card.querySelector('.add-button')
-  console.log(addButton)
+  const addButton = card.querySelector(".add-button");
 
   // ADD EVENT LISTENER TO ADD BUTTON //
-addButton.addEventListener('click', () => {
-    console.log(data)
-    hyruleData.favorites.push(data)
-
-
-})
+  addButton.addEventListener("click", () => {
+    hyruleData.favorites.push(data);
+  });
 
   displayCards.append(card);
 }
 
+// RENDER MATERIALS TO CARDS //
 function renderMaterials(data) {
   data.forEach((item) => {
-    console.log(item);
-
     renderMaterialsCard(item);
   });
 }
-
-
-
-
-
 
 // SEARCH //
 function searchHyrule(e) {
