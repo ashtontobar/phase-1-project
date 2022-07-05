@@ -1,0 +1,10 @@
+#results {
+    width: 100vw;
+    place-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+    margin: 5%
+}

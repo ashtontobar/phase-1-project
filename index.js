@@ -1,6 +1,6 @@
 const log = console.log
 
-// FETCH DATA //
+// FETCH HYRULE DATA //
 const hyruleData = {
   allData: fetchHyruleData("https://botw-compendium.herokuapp.com/api/v2/all"),
   favorites: [],
