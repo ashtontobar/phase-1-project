@@ -1,3 +1,5 @@
+// ADD EVENT LISTENER TO THE FAVORITES BUTTON // 
+
 // GLOBAL VARIABLES //
 const form = document.querySelector(".search-hyrule");
 const displayCards = document.querySelector("#results");
@@ -5,6 +7,7 @@ const displayCards = document.querySelector("#results");
 // FETCH DATA //
 const hyruleData = {
   allData: fetchHyruleData("https://botw-compendium.herokuapp.com/api/v2/all"),
+  favorites: []
 };
 async function fetchHyruleData(url) {
   const response = await fetch(url);
@@ -54,8 +57,19 @@ function renderMaterialsCard(data) {
       }</li>
       <li class="list-group-item">Cooking Effect(s): ${data.cooking_effect}</li>
     </ul>
-    <button>➕ Add</button>`;
+    <button class='add-button'>➕ Add</button>`;
   card.innerHTML = cardContent;
+  const addButton = card.querySelector('.add-button')
+  console.log(addButton)
+
+  // ADD EVENT LISTENER TO ADD BUTTON //
+addButton.addEventListener('click', () => {
+    console.log(data)
+    hyruleData.favorites.push(data)
+
+
+})
+
   displayCards.append(card);
 }
 
@@ -66,6 +80,11 @@ function renderMaterials(data) {
     renderMaterialsCard(item);
   });
 }
+
+
+
+
+
 
 // SEARCH //
 function searchHyrule(e) {
