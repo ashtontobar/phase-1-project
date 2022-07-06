@@ -10,6 +10,7 @@ const hyruleData = {
 const form = document.querySelector(".search-hyrule");
 const displayCards = document.querySelector("#results");
 
+
 // ADD EVENT LISTENER TO THE FAVORITES BUTTON //
 const faveButton = document.querySelector(".favorites-button");
 
