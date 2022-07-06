@@ -44,7 +44,7 @@ function renderFavoritesCard(data) {
           data.cooking_effect
         }</li>
       </ul>
-      <button class='remove-button btn btn-primary' type='button'>⏤ Remove</button>`;
+      <button class='remove-button btn btn-warning btn-sm' type='button'>⏤ Remove</button>`;
   card.innerHTML = cardContent;
   const removeButton = card.querySelector(".remove-button");
 
@@ -54,6 +54,8 @@ function renderFavoritesCard(data) {
   });
   displayCards.append(card);
 }
+
+// ADD EVENT LISTENER TO RESET BUTTON // 
 
 // ASYNC FUNCTION AKA FETCH // 
 async function fetchHyruleData(url) {
@@ -102,7 +104,7 @@ function renderMaterialsCard(data) {
       }</li>
       <li class="list-group-item">Cooking Effect(s): ${data.cooking_effect}</li>
     </ul>
-    <button class='add-button btn btn-primary' type='button'>✚ Add to Favorites</button>`;
+    <button class='add-button btn btn-dark btn-sm' type='button'>✚ Add to Favorites</button>`;
   card.innerHTML = cardContent;
   const addButton = card.querySelector(".add-button");
 
