@@ -44,7 +44,7 @@ function renderFavoritesCard(data) {
           data.cooking_effect
         }</li>
       </ul>
-      <button class='remove-button'>➖ Remove</button>`;
+      <button class='remove-button btn btn-primary' type='button'>⏤ Remove</button>`;
   card.innerHTML = cardContent;
   const removeButton = card.querySelector(".remove-button");
 
@@ -102,14 +102,14 @@ function renderMaterialsCard(data) {
       }</li>
       <li class="list-group-item">Cooking Effect(s): ${data.cooking_effect}</li>
     </ul>
-    <button class='add-button'>➕ Add to Favorites</button>`;
+    <button class='add-button btn btn-primary' type='button'>✚ Add to Favorites</button>`;
   card.innerHTML = cardContent;
   const addButton = card.querySelector(".add-button");
 
   // ADD EVENT LISTENER TO ADD BUTTON //
   addButton.addEventListener("click", () => {
     hyruleData.favorites.push(data);
-    addButton.textContent = 'Added'
+    addButton.textContent = '✓ Added'
   });
   displayCards.append(card);
 }
