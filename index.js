@@ -56,6 +56,10 @@ function renderFavoritesCard(data) {
 }
 
 // ADD EVENT LISTENER TO RESET BUTTON // 
+const resetButton = document.querySelector('.reset-button')
+resetButton.addEventListener('click', () => {
+    window.location.reload(true)
+})
 
 // ASYNC FUNCTION AKA FETCH // 
 async function fetchHyruleData(url) {
