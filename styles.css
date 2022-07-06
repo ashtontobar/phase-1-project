@@ -12,3 +12,8 @@
 .search-hyrule {
     margin: 3%
 }
+
+.input-text:focus {
+    border-color: green;
+    box-shadow: 0 0 10px green;
+}
