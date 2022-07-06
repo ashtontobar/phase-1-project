@@ -1,10 +1,14 @@
 const log = console.log;
 
-// FETCH HYRULE DATA //
+// HYRULE DATA - HOLDS ALL DATA //
 const hyruleData = {
   allData: fetchHyruleData("https://botw-compendium.herokuapp.com/api/v2/all"),
   favorites: [],
 };
+
+// GLOBAL VARIABLES //
+const form = document.querySelector(".search-hyrule");
+const displayCards = document.querySelector("#results");
 
 // ADD EVENT LISTENER TO THE FAVORITES BUTTON //
 const faveButton = document.querySelector(".favorites-button");
@@ -12,7 +16,6 @@ const faveButton = document.querySelector(".favorites-button");
 faveButton.addEventListener("click", () => {
   displayCards.textContent = ``;
   hyruleData.favorites.forEach((item) => {
-    console.log(item);
     renderFavoritesCard(item);
   });
 });
@@ -46,17 +49,13 @@ function renderFavoritesCard(data) {
   const removeButton = card.querySelector(".remove-button");
 
   // ADD EVENT LISTENER TO REMOVE BUTTON //
-  removeButton.addEventListener("click", (e) => {
+  removeButton.addEventListener("click", () => {
     card.remove();
   });
-
   displayCards.append(card);
 }
 
-// GLOBAL VARIABLES //
-const form = document.querySelector(".search-hyrule");
-const displayCards = document.querySelector("#results");
-
+// ASYNC FUNCTION AKA FETCH // 
 async function fetchHyruleData(url) {
   const response = await fetch(url);
   const data = await response.json();
@@ -110,8 +109,8 @@ function renderMaterialsCard(data) {
   // ADD EVENT LISTENER TO ADD BUTTON //
   addButton.addEventListener("click", () => {
     hyruleData.favorites.push(data);
+    addButton.textContent = 'Added'
   });
-
   displayCards.append(card);
 }
 
