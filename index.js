@@ -10,7 +10,6 @@ const hyruleData = {
 const form = document.querySelector(".search-hyrule");
 const displayCards = document.querySelector("#results");
 
-
 // ADD EVENT LISTENER TO THE FAVORITES BUTTON //
 const faveButton = document.querySelector(".favorites-button");
 
@@ -29,25 +28,36 @@ function renderFavoritesCard(data) {
   const cardContent = `
       <img src="${data.image}" class="card-img-top" alt="${data.image}">
       <div class="card-body">
-        <h5 class="card-title">Name: ${data.name[0]
+        <h5 class="card-title"><strong>${data.name[0]
           .toUpperCase()
-          .slice(-1)}${data.name.slice(1)} </h5>
+          .slice(-1)}${data.name.slice(1)} </strong></h5>
         <p class="card-text">${data.description}</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Hearts Recovered: ${
+        <li class="list-group-item"><strong>Hearts Recovered:</strong> ${
           data.hearts_recovered
         }</li>
-        <li class="list-group-item">Common Locations: ${
+        <li class="list-group-item"><strong>Common Locations:</strong> ${
           data.common_locations
         }</li>
-        <li class="list-group-item">Cooking Effect(s): ${
+        <li class="list-group-item"><strong>Cooking Effect(s):</strong> ${
           data.cooking_effect
         }</li>
       </ul>
       <button class='remove-button btn btn-warning btn-sm' type='button'>⏤ Remove</button>`;
   card.innerHTML = cardContent;
   const removeButton = card.querySelector(".remove-button");
+
+  // CARD EVENT LISTENER //
+  card.addEventListener("mouseenter", () => {
+    card.style.transform = "translateY(-10px)";
+    card.style.boxShadow = "2px 0px 20px #808080";
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "translateY(10px)";
+    card.style.boxShadow = "";
+  });
 
   // ADD EVENT LISTENER TO REMOVE BUTTON //
   removeButton.addEventListener("click", () => {
@@ -56,13 +66,7 @@ function renderFavoritesCard(data) {
   displayCards.append(card);
 }
 
-// ADD EVENT LISTENER TO RESET BUTTON // 
-const resetButton = document.querySelector('.reset-button')
-resetButton.addEventListener('click', () => {
-    window.location.reload(true)
-})
-
-// ASYNC FUNCTION AKA FETCH // 
+// ASYNC FUNCTION AKA FETCH //
 async function fetchHyruleData(url) {
   const response = await fetch(url);
   const data = await response.json();
@@ -95,28 +99,41 @@ function renderMaterialsCard(data) {
   const cardContent = `
     <img src="${data.image}" class="card-img-top" alt="${data.image}">
     <div class="card-body">
-      <h5 class="card-title">Name: ${data.name[0]
+      <h5 class="card-title">${data.name[0]
         .toUpperCase()
         .slice(-1)}${data.name.slice(1)} </h5>
       <p class="card-text">${data.description}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Hearts Recovered: ${
+      <li class="list-group-item"><strong>Hearts Recovered:</strong> ${
         data.hearts_recovered
       }</li>
-      <li class="list-group-item">Common Locations: ${
+      <li class="list-group-item"><strong>Common Locations:</strong> ${
         data.common_locations
       }</li>
-      <li class="list-group-item">Cooking Effect(s): ${data.cooking_effect}</li>
+      <li class="list-group-item"><strong>Cooking Effect(s):</strong> ${
+        data.cooking_effect
+      }</li>
     </ul>
     <button class='add-button btn btn-dark btn-sm' type='button'>✚ Add to Favorites</button>`;
   card.innerHTML = cardContent;
   const addButton = card.querySelector(".add-button");
 
+  // CARD EVENT LISTENER //
+  card.addEventListener("mouseenter", () => {
+    card.style.transform = "translateY(-10px)";
+    card.style.boxShadow = "2px 0px 20px #808080";
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "translateY(10px)";
+    card.style.boxShadow = "";
+  });
+
   // ADD EVENT LISTENER TO ADD BUTTON //
   addButton.addEventListener("click", () => {
     hyruleData.favorites.push(data);
-    addButton.textContent = '✓ Added'
+    addButton.textContent = "✓ Added";
   });
   displayCards.append(card);
 }

@@ -17,3 +17,8 @@
     border-color: green;
     box-shadow: 0 0 10px green;
 }
+
+.navbar-brand {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: green;
+}
