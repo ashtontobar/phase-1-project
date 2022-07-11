@@ -14,7 +14,7 @@ Hyrule Helper can be used to search for specific materials like silent mushrooms
 
 Each card includes an "+ Add to Favorites" button so that you can save your favorite items. The items are then viewable on the 'Favorites' page where you can remove them if wanted. 
 
-Currently Hyrule Helper will only show results for the materials endpoint in the API. 
+Currently Hyrule Helper will only show results for the materials and monsters endpoint in the API. 
 
 ## 🏃 Running the App
 1. Clone the repository to your machine using the following command `git clone git@github.com:ashtontobar/phase-1-project.git`
