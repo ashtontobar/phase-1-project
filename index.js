@@ -1,5 +1,3 @@
-const log = console.log;
-
 // HYRULE DATA - HOLDS ALL DATA //
 const hyruleData = {
   allData: fetchHyruleData("https://botw-compendium.herokuapp.com/api/v2/all"),
