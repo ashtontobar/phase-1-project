@@ -29,7 +29,7 @@ Currently Hyrule Helper will only show results for the materials and monsters en
 [Hyrule Compendium API](https://gadhagod.github.io/Hyrule-Compendium-API/#/?id=category) 
 
 
-##🌠 Stretch Goals
+## 🌠 Stretch Goals
 - [ ] Add Creatures Endpoint
 - [ ] Add Equipment Endpoint
 - [ ] Persist Favorites to JSON Server
