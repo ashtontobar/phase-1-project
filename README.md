@@ -6,6 +6,8 @@
 - Running the Application 
 - Link to Site
 - API
+- Stretch Goals
+- Project Planning
 
 ## 👋 About the App
 Hyrule Helper is an app to accompany Breath of the Wild gamers on their journey through Hyrule. Throughout the game players often need to search for & locate specific items to complete quests, defeat bosses, make recipes, & more. 
