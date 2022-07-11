@@ -50,12 +50,12 @@ function renderFavoritesCard(data) {
 
   // CARD EVENT LISTENER //
   card.addEventListener("mouseenter", () => {
-    card.style.transform = "translateY(-5px)";
+    card.style.transform = "translateY(-2px)";
     card.style.boxShadow = "2px 0px 20px #808080";
   });
 
   card.addEventListener("mouseleave", () => {
-    card.style.transform = "translateY(5px)";
+    card.style.transform = "translateY(2px)";
     card.style.boxShadow = "";
   });
 
