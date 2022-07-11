@@ -27,3 +27,14 @@ Currently Hyrule Helper will only show results for the materials and monsters en
 
 ## ℹ️ API
 [Hyrule Compendium API](https://gadhagod.github.io/Hyrule-Compendium-API/#/?id=category) 
+
+
+## Stretch Goals
+- [ ] Add Creatures Endpoint
+- [ ] Add Equipment Endpoint
+- [ ] Persist Favorites to JSON Server
+- [ ] Add Dark Mode
+
+## Project Planning 
+To plan this project I used one of my go to organizational tools, Google Sheets. I used this spreadsheet to outline & organize my thoughts for this project. 
+[Hyrule Helper Project Planning Spreadsheet](https://docs.google.com/spreadsheets/d/19RnjhgwnSZe0EAkKqht2VD9Q_E7pdWvzusKe1KzfDzM/edit?usp=sharing)
