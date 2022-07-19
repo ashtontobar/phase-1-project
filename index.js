@@ -132,7 +132,7 @@ function renderMaterialsCard(data) {
     });
   }
 
-// MONSTERS CARD - INCLUDES SPECIFIC KEYS FOR MATERIALS //
+// MONSTERS CARD - INCLUDES SPECIFIC KEYS FOR MONSTERS //
 function renderMonstersCard(data) {
     const card = document.createElement("div");
     card.className = "card";
