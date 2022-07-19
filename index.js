@@ -81,15 +81,15 @@ hyruleData.allData.then(({ data }) => {
   hyruleData.equipment = equipment;
 
   renderMaterials(materials);
-  renderMonsters(monsters)
+  renderMonsters(monsters);
 });
 
 // MATERIALS CARD - INCLUDES SPECIFIC KEYS FOR MATERIALS //
 function renderMaterialsCard(data) {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.style.width = "18rem";
-    const cardContent = `
+  const card = document.createElement("div");
+  card.className = "card";
+  card.style.width = "18rem";
+  const cardContent = `
       <img src="${data.image}" class="card-img-top" alt="${data.image}">
       <div class="card-body">
         <h5 class="card-title">${data.name[0]
@@ -109,35 +109,35 @@ function renderMaterialsCard(data) {
         }</li>
       </ul>
       <button class='add-button btn btn-dark btn-sm' type='button'>✚ Add to Favorites</button>`;
-    card.innerHTML = cardContent;
-    const addButton = card.querySelector(".add-button");
-  
-    // CARD EVENT LISTENER //
-    card.addEventListener("mouseenter", () => mouseEnter(card));
-  
-    card.addEventListener("mouseleave", () => mouseLeave(card));
-  
-    // ADD EVENT LISTENER TO ADD BUTTON //
-    addButton.addEventListener("click", () => {
-      hyruleData.favorites.push(data);
-      addButton.textContent = "✓ Added";
-    });
-    displayCards.append(card);
-  }
-  
-  // RENDER MATERIALS TO CARDS //
-  function renderMaterials(data) {
-    data.forEach((item) => {
-      renderMaterialsCard(item);
-    });
-  }
+  card.innerHTML = cardContent;
+  const addButton = card.querySelector(".add-button");
+
+  // CARD EVENT LISTENER //
+  card.addEventListener("mouseenter", () => mouseEnter(card));
+
+  card.addEventListener("mouseleave", () => mouseLeave(card));
+
+  // ADD EVENT LISTENER TO ADD BUTTON //
+  addButton.addEventListener("click", () => {
+    hyruleData.favorites.push(data);
+    addButton.textContent = "✓ Added";
+  });
+  displayCards.append(card);
+}
+
+// RENDER MATERIALS TO CARDS //
+function renderMaterials(data) {
+  data.forEach((item) => {
+    renderMaterialsCard(item);
+  });
+}
 
 // MONSTERS CARD - INCLUDES SPECIFIC KEYS FOR MONSTERS //
 function renderMonstersCard(data) {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.style.width = "18rem";
-    const cardContent = `
+  const card = document.createElement("div");
+  card.className = "card";
+  card.style.width = "18rem";
+  const cardContent = `
       <img src="${data.image}" class="card-img-top" alt="${data.image}">
       <div class="card-body">
         <h5 class="card-title">${data.name[0]
@@ -146,36 +146,34 @@ function renderMonstersCard(data) {
         <p class="card-text">${data.description}</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>Drops:</strong> ${
-          data.drops
-        }</li>
+        <li class="list-group-item"><strong>Drops:</strong> ${data.drops}</li>
         <li class="list-group-item"><strong>Common Locations:</strong> ${
           data.common_locations
         }</li>
       </ul>
       <button class='add-button btn btn-dark btn-sm' type='button'>✚ Add to Favorites</button>`;
-    card.innerHTML = cardContent;
-    const addButton = card.querySelector(".add-button");
-  
-    // CARD EVENT LISTENER //
-    card.addEventListener("mouseenter", () => mouseEnter(card));
-  
-    card.addEventListener("mouseleave", () => mouseLeave(card));
-  
-    // ADD EVENT LISTENER TO ADD BUTTON //
-    addButton.addEventListener("click", () => {
-      hyruleData.favorites.push(data);
-      addButton.textContent = "✓ Added";
-    });
-    displayCards.append(card);
-  }
-  
-  // RENDER MATERIALS TO CARDS //
-  function renderMonsters(data) {
-    data.forEach((item) => {
-      renderMonstersCard(item);
-    });
-  }
+  card.innerHTML = cardContent;
+  const addButton = card.querySelector(".add-button");
+
+  // CARD EVENT LISTENER //
+  card.addEventListener("mouseenter", () => mouseEnter(card));
+
+  card.addEventListener("mouseleave", () => mouseLeave(card));
+
+  // ADD EVENT LISTENER TO ADD BUTTON //
+  addButton.addEventListener("click", () => {
+    hyruleData.favorites.push(data);
+    addButton.textContent = "✓ Added";
+  });
+  displayCards.append(card);
+}
+
+// RENDER MATERIALS TO CARDS //
+function renderMonsters(data) {
+  data.forEach((item) => {
+    renderMonstersCard(item);
+  });
+}
 
 // SEARCH DATA //
 const inputText = document.querySelector(".input-text");
@@ -188,27 +186,25 @@ inputText.addEventListener("input", (e) => {
       );
     }
   );
-  const filterMonsters = hyruleData.monsters.filter(
-    ({ name, description }) => {
-      return (
-        name.includes(e.target.value) || description.includes(e.target.value)
-      );
-    }
-  );
+  const filterMonsters = hyruleData.monsters.filter(({ name, description }) => {
+    return (
+      name.includes(e.target.value) || description.includes(e.target.value)
+    );
+  });
   const results = document.querySelector("#results");
   results.textContent = " ";
-  renderMaterials(filterMaterials)
+  renderMaterials(filterMaterials);
   renderMonsters(filterMonsters);
 });
 
-// MOUSE ENTER EVENT LISTENER // 
+// MOUSE ENTER EVENT LISTENER //
 function mouseEnter(card) {
-    card.style.transform = "translateY(-2px)";
-    card.style.boxShadow = "2px 0px 20px #808080";
-  }
+  card.style.transform = "translateY(-2px)";
+  card.style.boxShadow = "2px 0px 20px #808080";
+}
 
-  // MOUSE LEAVE EVENT LISTENER //
-  function mouseLeave(card) {
-    card.style.transform = "translateY(2px)";
-    card.style.boxShadow = "";
-  }
+// MOUSE LEAVE EVENT LISTENER //
+function mouseLeave(card) {
+  card.style.transform = "translateY(2px)";
+  card.style.boxShadow = "";
+}
