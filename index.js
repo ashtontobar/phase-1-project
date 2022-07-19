@@ -47,15 +47,9 @@ function renderFavoritesCard(data) {
   const removeButton = card.querySelector(".remove-button");
 
   // CARD EVENT LISTENER //
-  card.addEventListener("mouseenter", () => {
-    card.style.transform = "translateY(-2px)";
-    card.style.boxShadow = "2px 0px 20px #808080";
-  });
+  card.addEventListener("mouseenter", () => () => mouseEnter(card));
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "translateY(2px)";
-    card.style.boxShadow = "";
-  });
+  card.addEventListener("mouseleave", () => () => mouseLeave(card));
 
   // ADD EVENT LISTENER TO REMOVE BUTTON //
   removeButton.addEventListener("click", () => {
